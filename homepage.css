@@ -1,0 +1,729 @@
+@import url("https://fonts.cdnfonts.com/css/helvetica-neue-55");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(#d1d1d1, #f1f1f1) center/cover no-repeat;
+}
+
+header {
+    position: fixed;
+    top: 0; /* Sticks the navbar to the top */
+    width: 100%;
+    padding: 0 20px;
+    background-color: rgb(255, 255, 255);
+    z-index: 10; /* Ensures the navbar stays above the content */
+    border-bottom: 1px solid #e0e0e0;
+}
+
+
+.nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    list-style: none;
+    margin: 0 auto;
+    border-bottom: 1px #000000;
+}
+
+.left-navbar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    position: relative;
+    max-width: 250px;
+}
+
+
+.product-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3rem;
+    font-weight: 100;
+    color: #000000;
+    text-align: center;
+    flex-grow: 1;
+    letter-spacing: 5px;
+    cursor: pointer;
+}
+
+.right-navbar {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.right-navbar a, .right-navbar img {
+    color: #000000;
+    text-decoration: none;
+    font-size: 23px;
+}
+
+.right-navbar a:hover {
+    text-decoration: underline;
+}
+
+.burger-btn {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-btn {
+    width: 30px;
+    height: 2px;
+    background-color: #000000;
+    margin: 5px 5px;
+    border-radius: 3px;
+}
+
+/* Search bar and button inside input */
+.search-bar input {
+    padding: 10px 30px 10px 10px;
+    margin-left: 20px;
+    border: 1px solid #29292954;
+    border-radius: 15px;
+    outline: none;
+    width: 200px;
+}
+
+.search-bar button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: transparent;
+    border: none;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.search-bar button img {
+    width: 20px;
+    height: 20px;
+}
+
+.right-navbar img {
+    width: 35px; /* Increased icon size */
+    height: 35px; /* Increased icon size */
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.hero {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100vh - 80px); /* Full viewport height minus navbar height */
+    overflow: hidden;
+    margin-top: 80px; /* Adds space below the navbar */
+}
+
+.hero video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures video covers entire section */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.hero p, .hero a, .hero-text {
+    position: relative;
+    z-index: 3; /* Ensure text appears in front of gradient and noise */
+    color: #ffffff;
+    text-align: center;
+    font-size: 2rem;
+    margin: 0.5rem;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); /* Adds a shadow for readability */
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 1px;
+}
+
+
+.hero .site-name {
+    font-size: 1rem; /* A bit larger to stand out */
+}
+.hero .fashion {
+    font-size: 3rem;
+    font-weight: 200;
+}
+
+
+.hero a {
+    display: inline-block;
+    padding: 10px 10px;
+    margin-top: 0.2rem;
+    color: #ffffff;
+    text-decoration: underline;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.hero-text {
+    position: absolute;
+    bottom: 20px; /* Position text closer to the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-weight:lighter;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #ffffff00 0%, #1b1b1b81 100%);
+    z-index: 1; /* Gradient behind text */
+    pointer-events: none;
+}
+
+.hero .noise {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA...'); /* Replace with your base64-encoded noise image */
+    pointer-events: none;
+    z-index: 2; /* Noise layer behind text */
+    animation: noiseAnimation 1s infinite linear;
+}
+
+
+/* Optional: Noise animation to make it move slightly */
+@keyframes noiseAnimation {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
+}
+
+.product-category {
+    padding: 50px 0;
+    text-align: center;
+    background-color: #f9f9f9;
+    padding-bottom: 80px;
+}
+
+.product-category p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: #181818;
+    letter-spacing: 2px;
+}
+
+.categories {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px; /* Space between the videos */
+    margin: 0 50px;
+}
+
+.categories video{
+    cursor: pointer;
+}
+
+.categories div {
+    position: relative;
+    flex: 1; /* Ensure each video takes equal space */
+    overflow: hidden; /* Hide any overflow to maintain a clean look */
+}
+
+.categories video {
+    width: 90%; /* Make video take full width of its container */
+    height: 90%; /* Set the height to 100% of the div */
+    object-fit: cover; /* Ensure the video covers the area without distortion */
+    border-radius: 30px;
+}
+
+.categories p {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #000000e5;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 10px;
+    cursor: pointer;
+    letter-spacing: 2px;
+}
+
+.categories p:hover{
+    text-decoration: underline;
+    transition: ease-in 5s;
+}
+
+.product-category .title-category{
+    margin: 30px;
+    padding: 20px;
+    font-size: 2rem;
+}
+
+.product-category button {
+    margin-top: 20px;
+    padding: 12px 50px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: 1.7px solid #000000;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.product-category button:hover,
+.new-arrivals button:hover {
+    background-color: #e0e0e0;
+}
+
+.image img {
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    object-position: center; /* Centers the image in the container */
+}
+
+.new-arrivals {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 80px 40px;
+}
+
+.new-arrivals p {
+    font-size: 1.5rem;
+    margin: 50px;
+    color: #181818;
+    letter-spacing: 2px;
+}
+
+.new-arrivals .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns of equal width */
+    grid-auto-rows: 1fr; /* Each row will adjust automatically based on content */
+    align-items: center;
+    padding: 20px;
+    margin: 0;
+    gap: 30px;
+    width: 100%;
+    justify-items: center;
+}
+
+.grid-container img {
+    height: 330px;
+    width: 300px;
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+}
+
+.new-arrivals .discover-button {
+    margin-top: 50px;
+    padding: 12px 50px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: 1.7px solid #000000;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.services {
+    padding: 100px 20px;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+.services-title {
+    font-size: 2rem;
+    margin-bottom: 50px;
+    color: #181818;
+    letter-spacing: 2px;
+}
+
+.service-grid {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.service-box {
+    position: relative;
+    flex: 1 1 250px;
+    max-width: 300px;
+    width: 250px;
+    height: 400px;
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.service-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border-radius: 10px;
+}
+
+.service-box::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.103), rgba(0, 0, 0, 0.521));
+    border-radius: 10px;
+    z-index: 2;
+}
+
+.service-text,
+.service-link {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.897);
+}
+
+.service-text {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-top: 320px; /* Adjusts position based on image size */
+}
+
+.service-link {
+    font-size: 1.1rem;
+    text-decoration: none;
+    margin-top: 10px;
+    display: inline-block;
+    color: #ffffff;
+    transition: color 0.3s;
+}
+
+.service-link:hover{
+    text-decoration: underline;
+}
+
+.service-box:hover .service-icon {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+    transition: transform 0.3s;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column; /* Stack the footer links and bottom section vertically */
+    align-items: flex-start;
+    background-color: #f5f5f5;
+    border-top: 1px solid #e0e0e0;
+    padding: 50px 150px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    justify-content: space-between;
+    width: 100%; /* Ensure it takes full width */
+    margin-bottom: 20px; /* Add space below the links */
+}
+
+.footer-links p {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333333;
+    text-decoration: none;
+}
+
+.footer-links a {
+    display: block;
+    font-size: 1rem;
+    color: #333333;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #252525;
+    text-decoration: underline;
+}
+
+.bottom {
+    display: flex;
+    gap: 100px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border-top: 1px solid #e0e0e0;
+    padding: 30px;
+}
+
+.bottom a {
+    font-size: 1rem;
+    color: #666666;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.bottom a:hover {
+    color: #252525;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer {
+        align-items: center;
+    }
+
+    .footer-links {
+        width: 100%;
+        gap: 30px;
+    }
+
+    .bottom {
+        justify-content: center;
+    }
+}
+
+
+/*Login & Signup Forms*/
+.form-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    max-width: 720px;
+    border-radius: 5px;
+    background: #fff;
+    border: 2px solid #fff;
+    transform: translate(-50%, -70%);
+}
+
+.show-popup .form-popup {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease, opacity 0.1s;
+}
+
+.form-popup .close-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    color: #5e5d5d;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.blur-bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    backdrop-filter: blur(5px);
+    transition: 0.1s ease;
+}
+
+.show-popup .blur-bg-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.form-popup .form-box {
+    display: flex;
+}
+
+.form-box .form-details {
+    width: 100%;
+    color: #fff;
+    max-width: 330px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 40px;
+    background: linear-gradient(#000000d0, #1d1d1d7e), url(https://genshin.global/wp-content/uploads/2023/12/20M-follower-official-genshin-wallpaper.jpg) center/cover no-repeat;
+    border-radius: 8px;
+    font-size: 1.3rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.form-box .form-content {
+    width: 100%;
+    padding: 40px;
+    text-align: center;
+    background: #fff;
+    border-radius: 15px;
+}
+
+.form-box h2 {
+    font-size: 2rem;
+    margin-bottom: 29px;
+}
+
+form .input-field {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.input-field input {
+    height: 100%;
+    width: 100%;
+    background: none;
+    outline: none;
+    font-size: 0.95rem;
+    padding: 0 15px;
+    border: 1px solid #717171;
+    border-radius: 3px;
+}
+
+.input-field input:focus {
+    border: 1px solid #ca2929;
+}
+
+.input-field label {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #4a4646;
+    pointer-events: none;
+    transition: 0.2s ease;
+}
+
+.input-field input:is(:focus, :valid) {
+    padding: 16px 15px 0;
+}
+
+.input-field input:is(:focus, :valid)~label {
+    transform: translateY(-120%);
+    color: #ca2929;
+    font-size: 0.75rem;
+}
+
+.form-box a {
+    color: #ca2929;
+    text-decoration: none;
+}
+
+.form-box a:hover {
+    text-decoration: underline;
+}
+
+form .remember-forgot{
+    margin-top: 8px;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+form button {
+    width: 100%;
+    color: #fff;
+    border: none;
+    outline: none;
+    padding: 14px 0;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 25px 0;
+    background: #ca2929;
+    transition: 0.2s ease;
+}
+
+form button:hover {
+    background: #ca2929;
+}
+
+.form-content .bottom-link {
+    text-align: center;
+}
+
+.form-popup .signup,
+.form-popup.show-signup .login {
+    display: none;
+}
+
+.form-popup.show-signup .signup {
+    display: flex;
+}
+
+.signup .policy-text {
+    display: flex;
+    margin-top: 14px;
+    align-items: center;
+}
+
+.signup .policy-text input {
+    width: 14px;
+    height: 14px;
+    margin-right: 7px;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    outline: none;
+    padding: 10px 15px;
+    font-size: 1.5rem;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: background-color 0.2s ease;
+    background: white;
+    box-shadow: 0.5px 1px 1px #000;
+    color: black;
+}
+
+.social-btn:hover {
+    background: #ca2929;
+    color: white;
+}
